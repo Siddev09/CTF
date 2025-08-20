@@ -104,10 +104,12 @@ function whitelistuser(address user) public onlyOwner {
         }
 
 
+    }
+}
+
 
 ```
 
 
 
-    }
-}
+
