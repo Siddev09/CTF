@@ -37,7 +37,7 @@ contract Confidential {
 ### Explaination 
 
 
-- Storage Layout 
+#### Storage Layout 
 
 - 0x0 has firstUser string, which is a string that can fit in less than 32 bytes.
 - 0x1 has 256-bit Alice age.
@@ -50,6 +50,7 @@ contract Confidential {
 - 0x8 has the 32-byte Bob data.
 - 0x9 has the 32-byte Bob hash
 
+---
 - Use Ether.js to fetch the storage slots
 - Ex. `[ethers.provider.getStorageAt(contract.address, ethers.utils.hexValue(4)]`
 - After fetching the hashes at `0x4` and `0x9` 
