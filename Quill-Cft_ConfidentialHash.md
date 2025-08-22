@@ -1,3 +1,7 @@
+### OBJECTIVE 
+
+- Find the keccak256 hash of aliceHash and bobHash.
+
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.7;
@@ -29,3 +33,36 @@ contract Confidential {
 }
 
 ```
+
+### Explaination 
+
+
+- Storage Layout 
+
+0x0 has firstUser string, which is a string that can fit in less than 32 bytes.
+0x1 has 256-bit Alice age.
+0x2 has the 32-byte Alice private key.
+0x3 has the 32-byte Alice data.
+0x4 has the 32-byte Alice hash.
+0x5 has secondUser string, which is a string that can fit in less than 32 bytes.
+0x6 has 256-bit Bob age.
+0x7 has the 32-byte Bob private key.
+0x8 has the 32-byte Bob data.
+0x9 has the 32-byte Bob hash
+
+- Use Ether.js to fetch the storage slots
+- Ex. `[ethers.provider.getStorageAt(contract.address, ethers.utils.hexValue(4)]`
+- After fetching the hashes at `0x4` and `0x9` 
+- `const hash = ethers.utils.solidityKeccak256(['bytes32', 'bytes32'], [aliceHash, bobHash]);`
+- now pass it into checkHash function
+
+
+
+
+
+
+
+
+
+
+
